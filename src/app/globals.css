@@ -25,3 +25,22 @@ body {
     text-wrap: balance;
   }
 }
+
+@font-face {
+  font-family: 'simple-memory-iconfont';
+  src: url('fonts/simple-memory-iconfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'long-cang';
+  src: url('fonts/LongCang-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon-key::before {
+  content: "\e60b";
+  font-family: 'simple-memory-iconfont';
+}
