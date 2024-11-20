@@ -1,25 +1,15 @@
 "use client";
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, useTheme } from '@mui/material';
+import { Typography, Button, Toolbar, ListItemText, ListItemButton } from '@mui/material';
+import { DarkMode, LightMode, Menu } from '@mui/icons-material';
 
 const drawerWidth = 240;
 const navItems = ['主页', '随笔', '作品'];
 
 function DrawerAppBar(props) {
-  const { window } = props;
+  const theme = useTheme();
+  const { window, toggleTheme } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -27,10 +17,16 @@ function DrawerAppBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Cheney
-      </Typography>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'left' }}>
+      <Box sx={{ my: 1.5 }}>
+        <IconButton onClick={toggleTheme} color="inherit" sx={{ ml: 1.5, mr: 3.5 }}>
+          {theme.palette.mode === 'light' ? <LightMode /> : <DarkMode />}
+        </IconButton>
+        <Typography component={'span'} variant="h6"
+          sx={{ position: 'relative', top: '8px' }}>
+          Cheney
+        </Typography>
+      </Box>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -58,7 +54,7 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography
             variant="h6"
@@ -73,6 +69,9 @@ function DrawerAppBar(props) {
                 {item}
               </Button>
             ))}
+            <IconButton onClick={toggleTheme} color="inherit">
+              {theme.palette.mode === 'light' ? <LightMode /> : <DarkMode />}
+            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
