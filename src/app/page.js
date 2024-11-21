@@ -1,35 +1,11 @@
-"use client";
-import AppBar from "./home/appBar";
-import ThreeDScene from "./components/ThreeDScene";
+import ThreeDScene from '../components/ThreeDScene'
 import Typography from '@mui/material/Typography';
-import Toolbar from '@mui/material/Toolbar';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Link from "next/link";
-import { Button, createTheme, CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [themeMode, setThemeMode] = useState(prefersDarkMode ? 'dark' : 'light')
-  useEffect(() => {
-    setThemeMode(prefersDarkMode ? 'dark' : 'light');
-  }, [prefersDarkMode]);
-  const toggleTheme = () => {
-    setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-  };
-  const theme = createTheme({
-    palette: {
-      mode: themeMode,
-    },
-  });
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div>
-          <AppBar toggleTheme={toggleTheme}/>
-        </div>
-        <Toolbar />
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <main className="flex flex-col gap-8 row-start-2 items-center sm:items-col">
             <div >
@@ -68,6 +44,5 @@ export default function Home() {
           </footer>
         </div>
       </div>
-    </ThemeProvider>
   );
 }
