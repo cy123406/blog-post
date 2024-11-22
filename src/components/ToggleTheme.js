@@ -1,7 +1,7 @@
 import { createTheme, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export const ToggleTheme = () => {
+export const GetTheme = () => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
     const [themeMode, setThemeMode] = useState(prefersDarkMode ? 'dark' : 'light')
     useEffect(() => {

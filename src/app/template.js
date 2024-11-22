@@ -1,18 +1,14 @@
 "use client"
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { ToggleTheme } from "@/components/ToggleTheme";
-import Toolbar from '@mui/material/Toolbar';
+import { GetTheme } from "@/components/ToggleTheme";
 import AppBar from "./home/appBar";
 
 export default function Template({ children }) {
-    const theme = ToggleTheme()
+    const theme = GetTheme()
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <div>
-                <AppBar toggleTheme={theme.customMethods.toggleTheme} />
-            </div>
-            <Toolbar />
+            <AppBar toggleTheme={theme.customMethods.toggleTheme} />
             {children}
         </ThemeProvider>
     )
