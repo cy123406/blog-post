@@ -28,8 +28,10 @@ export async function getPostData(id) {
     const parsed = remark()
         .use(remarkParse)
         .parse(matterResult.content);
+    let idCounter = 1;
     const titles = parsed.children.filter(r => r.type === 'heading').map(r => {
         return {
+            id: idCounter++ * 2,
             level: r.depth,
             text: r.children[0].value
         }
