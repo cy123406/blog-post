@@ -50,6 +50,30 @@ function Markdown({ markdown }) {
                     variant="h6" gutterBottom {...props} />
             )
         },
+        h4: ({ node, ...props }) => {
+            let id = generateId()
+            return (
+                <Typography id={id}
+                    sx={{ scrollMarginTop: `calc(${theme.mixins.toolbar.minHeight}px + 16px)` }}
+                    variant="h7" gutterBottom {...props} />
+            )
+        },
+        h5: ({ node, ...props }) => {
+            let id = generateId()
+            return (
+                <Typography id={id}
+                    sx={{ scrollMarginTop: `calc(${theme.mixins.toolbar.minHeight}px + 16px)` }}
+                    variant="h7" gutterBottom {...props} />
+            )
+        },
+        h6: ({ node, ...props }) => {
+            let id = generateId()
+            return (
+                <Typography id={id}
+                    sx={{ scrollMarginTop: `calc(${theme.mixins.toolbar.minHeight}px + 16px)` }}
+                    variant="h7" gutterBottom {...props} />
+            )
+        },
         p: ({ node, ...props }) => (
             <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-wrap' }} {...props} />
         ),

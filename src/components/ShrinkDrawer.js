@@ -2,18 +2,40 @@
 import { ExpandCircleDownSharp } from "@mui/icons-material";
 import { Button, Drawer, List, ListItem, ListItemText, Typography, useTheme } from "@mui/material";
 import { Box } from "@react-three/drei";
-import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const openDraw = "openDraw";
 
 const list = (data) => {
+    const theme = useTheme();
+    const isDark = theme.palette.mode === 'dark' ? true : false;
+    const appBarHeight = theme.mixins.toolbar.minHeight || 64; // 获取 AppBar 高度
+    const offset = 16; // 偏移值
+    const handleScroll = (targetId) => {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - (appBarHeight + offset),
+                behavior: 'smooth'
+            })
+        }
+        targetElement.classList.add('animate-pulse');
+        if (isDark) {
+            targetElement.style.background = '#282c34'
+        } else {
+            targetElement.style.background = '#fdf6e3'
+        }
+        setTimeout(() => {
+            targetElement.style.background = '';
+            targetElement.classList.remove('animate-pulse');
+        }, 500);
+    }
     return (
         data.map(r => (
-            <Link href={`#heading-${r.id}`}>
-            <ListItem key={r.id} button>
+            <ListItem key={r.id} button onClick={() => handleScroll(`heading-${r.id}`)}>
                 {space(r.level)}
                 <ListItemText primary={r.text} />
             </ListItem>
-            </Link>
         ))
     )
 }
@@ -31,8 +53,16 @@ const space = (count) => (
 const ShrinkDrawer = ({ data }) => {
     const theme = useTheme();
     const [open, setOpen] = useState(true);
+    useEffect(() => {
+        const prefersDrawer = window.localStorage.getItem(openDraw);
+        if (prefersDrawer) {
+            setOpen(prefersDrawer === 'true')
+        }
+    }, [])
     const toggleDrawer = () => {
-        setOpen(open ? false : true);
+        let newOpen = open ? false : true
+        setOpen(newOpen);
+        window.localStorage.setItem(openDraw, newOpen.toString())
     }
     return (
         <Box >
