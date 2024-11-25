@@ -31,7 +31,7 @@ export async function getPostData(id) {
     let idCounter = 1;
     const titles = parsed.children.filter(r => r.type === 'heading').map(r => {
         return {
-            id: idCounter++ * 2,
+            id: idCounter++,
             level: r.depth,
             text: r.children[0].value
         }
