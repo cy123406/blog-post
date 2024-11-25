@@ -17,6 +17,18 @@ export function getAllPostIds() {
     })
 }
 
+export function getPostDataById(id) {
+    const fullPath = path.join(postsDirectory, `${id}.md`)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const matterResult = matter(fileContents)
+    const { content, data } = matterResult;
+    return {
+        id,
+        content,
+        ...data
+    }
+}
+
 export async function getPostData(id) {
     const fullPath = path.join(postsDirectory, `${id}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')

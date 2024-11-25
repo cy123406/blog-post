@@ -3,9 +3,14 @@ import * as React from 'react';
 import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, useTheme } from '@mui/material';
 import { Typography, Button, Toolbar, ListItemText, ListItemButton } from '@mui/material';
 import { DarkMode, LightMode, Menu } from '@mui/icons-material';
+import Link from 'next/link';
 
 const drawerWidth = 240;
-const navItems = ['主页', '随笔', '作品'];
+const navItems = [
+  { href: '/', name: '主页' },
+  { href: '/', name: '随笔' },
+  { href: '/', name: '作品' }
+];
 
 function DrawerAppBar(props) {
   const theme = useTheme();
@@ -30,10 +35,12 @@ function DrawerAppBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+          <ListItem key={item.name} disablePadding>
+            <Link href={item.href}>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -65,9 +72,11 @@ function DrawerAppBar(props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+              <Link href={item.href}>
+              <Button key={item.name} sx={{ color: '#fff' }}>
+                {item.name}
               </Button>
+              </Link>
             ))}
             <IconButton onClick={toggleTheme} color="inherit">
               {theme.palette.mode === 'light' ? <LightMode /> : <DarkMode />}

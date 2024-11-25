@@ -29,10 +29,26 @@ const Model = ({ path }) => {
   useEffect(() => {
     if (modelRef.current) { // 确保模型已经加载完成
       const targetPoint = new THREE.Vector3(mousePosition.x, mousePosition.y, 0.75); // 创建一个 Vector2 对象表示鼠标位置
-      if (targetPoint.x > 0.35) targetPoint.setX(0.35);
-      if (targetPoint.x < -0.25) targetPoint.setX(-0.24);
-      if (targetPoint.y > 0.16) targetPoint.setY(0.16);
-      if (targetPoint.y < -0.27) targetPoint.setY(-0.27);
+      // const raycaster = new THREE.Raycaster()
+      // raycaster.setFromCamera(mousePosition, camera);
+      // const plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+      // // 计算射线与平面的交点
+      // const intersection = new THREE.Vector3();
+      // raycaster.ray.intersectPlane(plane, intersection);
+      // const screenPosition = intersection.clone().project(camera);
+
+      // // 将屏幕坐标从 NDC [-1, 1] 转换为像素坐标
+      // const x = (screenPosition.x + 1) / 2 * window.innerWidth;
+      // const y = -(screenPosition.y - 1) / 2 * window.innerHeight;
+      // targetPoint.setX(x/1000 - 0.8)
+      // targetPoint.setY(-y/1000 + 0.15)
+      // if (targetPoint.y < -0.7) targetPoint.setY(-0.7);
+      // modelRef.current.lookAt(targetPoint);
+      targetPoint.y -= 0.55
+      if (targetPoint.x > 0.5) targetPoint.setX(0.5);
+      if (targetPoint.x < -0.5) targetPoint.setX(-0.5);
+      if (targetPoint.y > 0.1) targetPoint.setY(0.1);
+      if (targetPoint.y < -0.5) targetPoint.setY(-0.5);
       modelRef.current.lookAt(targetPoint);
     }
   }, [mousePosition, camera]); // 依赖于鼠标位置和相机

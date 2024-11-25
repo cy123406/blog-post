@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 const THEME = "theme";
 
 export const GetTheme = () => {
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    const [themeMode, setThemeMode] = useState(prefersDarkMode ? 'dark' : 'light')
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
+    const [themeMode, setThemeMode] = useState(prefersDarkMode ? 'light' : 'dark')
     useEffect(() => {
         const prefersThemeMode = window.localStorage.getItem(THEME);
         if (prefersThemeMode !== themeMode) {
