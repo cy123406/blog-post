@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const openDraw = "openDraw";
 
-const list = (data) => {
+const TitleList = (data) => {
     const theme = useTheme();
     const isDark = theme.palette.mode === 'dark' ? true : false;
     const appBarHeight = theme.mixins.toolbar.minHeight || 64; // 获取 AppBar 高度
@@ -108,7 +108,7 @@ const ShrinkDrawer = ({ data }) => {
             >
                 <Box >
                     <List sx={{ pt: 6 }}>
-                        {list(data)}
+                        {TitleList(data)}
                     </List>
                 </Box>
             </Drawer>

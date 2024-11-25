@@ -115,10 +115,9 @@ function Markdown({ markdown }) {
     return (
         <Box >
             <ReactMarkdown
-                children={markdown}
                 remarkPlugins={[remarkGfm, remarkBreaks]}
                 components={MarkdownComponents}
-            />
+            >{markdown}</ReactMarkdown>
         </Box>
     );
 }
