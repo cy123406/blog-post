@@ -1,7 +1,6 @@
 "use client";
 import { ExpandCircleDownSharp } from "@mui/icons-material";
-import { Button, Drawer, List, ListItem, ListItemText, Typography, useTheme } from "@mui/material";
-import { Box } from "@react-three/drei";
+import { Box, Button, Drawer, List, ListItem, ListItemText, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const openDraw = "openDraw";
@@ -32,9 +31,9 @@ const list = (data) => {
     }
     return (
         data.map(r => (
-            <ListItem key={r.id} button onClick={() => handleScroll(`heading-${r.id}`)}>
+            <ListItem key={r.id} onClick={() => handleScroll(`heading-${r.id}`)}>
                 {space(r.level)}
-                <ListItemText primary={r.text} />
+                <ListItemText key={`text-${r.id}`} primary={r.text} />
             </ListItem>
         ))
     )
@@ -43,7 +42,7 @@ const list = (data) => {
 const space = (count) => (
     <Typography component='span'>
         {Array.from({ length: count }).map((_, index) => (
-            <Typography component='span'
+            <Typography key={index} component='span'
                 sx={{ ml: 2 }}
             />
         ))}
@@ -82,7 +81,6 @@ const ShrinkDrawer = ({ data }) => {
                     transition: 'transform 0.3s ease', // 旋转动画
                 }} />
             </Button>
-
             <Drawer
                 variant="persistent"
                 anchor="left"
