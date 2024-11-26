@@ -32,22 +32,12 @@ const TitleList = (data) => {
     return (
         data.map(r => (
             <ListItem key={r.id} onClick={() => handleScroll(`heading-${r.id}`)}>
-                {space(r.level)}
-                <ListItemText key={`text-${r.id}`} primary={r.text} />
+                <Typography sx={{ ml: 2 * r.level }} />
+                <ListItemText primary={r.text} />
             </ListItem>
         ))
     )
 }
-
-const space = (count) => (
-    <Typography component='span'>
-        {Array.from({ length: count }).map((_, index) => (
-            <Typography key={index} component='span'
-                sx={{ ml: 2 }}
-            />
-        ))}
-    </Typography>
-)
 
 const ShrinkDrawer = ({ data }) => {
     const theme = useTheme();
