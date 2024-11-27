@@ -1,5 +1,5 @@
 ---
-title: 'java简介'
+title: 'java闲谈'
 date: '2022-09-29'
 tag:
 	- java
@@ -25,7 +25,7 @@ JDK17：2021年发布
 
 ​	JDK17的垃圾回收机制优化了
 
-![image-20220921135140540](C:\Users\601696\AppData\Roaming\Typora\typora-user-images\image-20220921135140540.png)
+![img1](/img/posts/java-info/img1.png)
 
 ​	JDK 17对比JDK 8 延迟提升 60%，吞吐量提升 18%；	
 
@@ -76,7 +76,7 @@ springboot3.x
 
 新版本，稳定性没有时间的验证（不推荐）
 
-![image-20220921151922260](C:\Users\601696\AppData\Roaming\Typora\typora-user-images\image-20220921151922260.png)
+![img2](/img/posts/java-info/img2.png)
 
 
 
@@ -94,7 +94,7 @@ mysql5.7之后的一个版本就是mysql8.0，
 
 ### 数据库连接池：druid（德鲁伊）,HikariCP（Hikari: ひかり: 光）
 
-![image-20220921163712144](C:\Users\601696\AppData\Roaming\Typora\typora-user-images\image-20220921163712144.png)
+![img3](/img/posts/java-info/img3.png)
 
 性能方面：HikariCP因为细节方面优化力度较大，性能方面强于Druid
 

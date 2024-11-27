@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
-import { Typography, Link, Box } from '@mui/material';
+import { Typography, Link, Box, List, ListItem, ListItemText } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism'; // 使用 Prism 主题
 import { useTheme } from "@emotion/react";
@@ -80,8 +80,13 @@ function Markdown({ markdown }) {
         a: ({ node, ...props }) => (
             <Link {...props} color="primary" />
         ),
+        ul: ({ node, ...props }) => (
+            <List sx={{ pl: 2 }} {...props} />
+        ),
         li: ({ node, ...props }) => (
-            <Typography component="li" variant="body1" {...props} />
+            <ListItem sx={{ display: "list-item", pl: 0 }}>
+                <ListItemText primaryTypographyProps={{ variant: "body1" }} {...props} />
+            </ListItem>
         ),
         code: ({ node, inline, className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');

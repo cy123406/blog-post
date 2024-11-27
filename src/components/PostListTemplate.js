@@ -8,7 +8,7 @@ const PostListTemplate = ({ posts }) => {
     const theme = useTheme();
     const [page, setPage] = useState(0);
     // 每页默认大小
-    const defaultSize = 1;
+    const defaultSize = 5;
     const [rowsPerPage, setRowsPerPage] = useState(defaultSize);
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -17,7 +17,11 @@ const PostListTemplate = ({ posts }) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     }
-    const PostItem = posts.slice(rowsPerPage * page, Math.min(rowsPerPage * page + rowsPerPage, posts.length)).map(postData => {
+    const PostItem = posts.sort((a, b) => {
+        let t1 = new Date(a.date)
+        let t2 = new Date(b.date)
+        return t2 - t1
+    }).slice(rowsPerPage * page, Math.min(rowsPerPage * page + rowsPerPage, posts.length)).map(postData => {
         return (
             <ListItem key={postData.id}>
                 <Box>
