@@ -17,11 +17,13 @@ const PostListTemplate = ({ posts }) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     }
-    const PostItem = posts.sort((a, b) => {
+    // 按照时间排序
+    posts.sort((a, b) => {
         let t1 = new Date(a.date)
         let t2 = new Date(b.date)
         return t2 - t1
-    }).slice(rowsPerPage * page, Math.min(rowsPerPage * page + rowsPerPage, posts.length)).map(postData => {
+    })
+    const PostItem = posts.slice(rowsPerPage * page, Math.min(rowsPerPage * page + rowsPerPage, posts.length)).map(postData => {
         return (
             <ListItem key={postData.id}>
                 <Box>
