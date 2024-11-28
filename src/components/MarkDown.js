@@ -96,6 +96,12 @@ function Markdown({ markdown }) {
                     language={match[1]}
                     PreTag="div"
                     {...props}
+                    customStyle={{
+                        width: '100%',
+                        maxWidth: '1100px',
+                        overflow: 'auto',
+                        borderRadius: '8px'
+                    }}
                 >
                     {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>
