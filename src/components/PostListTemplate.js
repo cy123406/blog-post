@@ -89,7 +89,7 @@ const PostListTemplate = ({ posts }) => {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 labelRowsPerPage="Size"
-                sx={{mb:10}}
+                sx={{ mb: 10 }}
             />
         </List>
     )
