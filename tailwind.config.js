@@ -16,6 +16,7 @@ module.exports = {
       animation: {
         heartAnimate: 'heartAnimate 1.33s ease-in-out infinite',
         myFace: 'myFace 8s ease-in-out infinite',
+        lineLogo: 'lineLogo 2s ease-in-out infinite alternate'
       },
       keyframes: {
         // 心跳
@@ -51,6 +52,14 @@ module.exports = {
           '92%': { transform: 'translateY(.5px) rotate(-.5deg)' },
           '94%': { transform: 'translateY(2.5px) rotate(.5deg)' },
         },
+        lineLogo: {
+          '0%': {
+            'stroke-dashoffset': 400
+          },
+          '100%': {
+            'stroke-dashoffset': 0
+          },
+        }
       },
       fontFamily: {
         longCang: ['long-cang','sans-serif'],

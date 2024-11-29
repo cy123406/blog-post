@@ -4,6 +4,7 @@ import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, 
 import { Typography, Button, Toolbar, ListItemText, ListItemButton } from '@mui/material';
 import { DarkMode, LightMode, Menu } from '@mui/icons-material';
 import Link from 'next/link';
+import Logo from './avg/LogoAVG';
 
 const drawerWidth = 240;
 const navItems = [
@@ -64,11 +65,10 @@ function DrawerAppBar(props) {
             <Menu />
           </IconButton>
           <Typography
-            variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Cheney
+            <Logo />
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
