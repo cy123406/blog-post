@@ -10,7 +10,7 @@ const drawerWidth = 240;
 const navItems = [
   { href: '/', name: '主页' },
   { href: '/', name: '随笔' },
-  { href: '/', name: '作品' }
+  { href: '/artwork/showbiz', name: '作品' }
 ];
 
 function DrawerAppBar(props) {
